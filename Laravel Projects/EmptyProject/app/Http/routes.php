@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/formitem', function () {
+    return view('formitem');
+});
+
+Route::get('/insertitem', 'ItemController@insert');
+
+Route::get('/updateitem', 'ItemController@update');
+
+Route::get('/deleteitem', 'ItemController@delete');
+
+Route::get('/viewitem', 'ItemController@view');
+
+Route::get('/openitemform', function() {
+    return view('formitem');
+});
