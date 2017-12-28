@@ -4,6 +4,7 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Lang;
 
 trait AuthenticatesUsers
@@ -25,7 +26,7 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         $view = property_exists($this, 'loginView')
                     ? $this->loginView : 'auth.authenticate';
@@ -34,7 +35,9 @@ trait AuthenticatesUsers
             return view($view);
         }
 
-        return view('auth.login');
+        $savedEmail = Cookie::get('emailCookie', old('email'));
+
+        return view('auth.login')->with('savedEmail', $savedEmail);
     }
 
     /**
@@ -56,6 +59,7 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
+
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -72,6 +76,7 @@ trait AuthenticatesUsers
         $credentials = $this->getCredentials($request);
 
         if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
+
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
 
@@ -107,6 +112,8 @@ trait AuthenticatesUsers
      */
     protected function handleUserWasAuthenticated(Request $request, $throttles)
     {
+        Cookie::queue('emailCookie', $request->email, 60);
+
         if ($throttles) {
             $this->clearLoginAttempts($request);
         }
@@ -142,7 +149,7 @@ trait AuthenticatesUsers
     {
         return Lang::has('auth.failed')
                 ? Lang::get('auth.failed')
-                : 'These credentials do not match our records.';
+                : 'Your email or password is invalid.';
     }
 
     /**

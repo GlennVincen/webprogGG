@@ -7,14 +7,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" placeholder="youremail@example.com" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -28,7 +28,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control" name="password" placeholder="password" value="{{ old('password') }}">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -42,7 +42,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Re-type password">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -56,7 +56,7 @@
                             <label for="profilePicture" class="col-md-4 control-label">Profile Picture</label>
 
                             <div class="col-md-6">
-                                <input id="profilePicture" type="text" class="form-control" name="profilePicture" value="{{ old('profilePicture') }}">
+                                <input id="profilePicture" type="file" class="form-control" name="profilePicture">
 
                                 @if ($errors->has('profilePicture'))
                                     <span class="help-block">
@@ -70,7 +70,8 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="text" class="form-control" name="gender" value="{{ old('gender') }}">
+                                <input type="radio" name="gender" value="Male"> Male<br>
+                                <input type="radio" name="gender" value="Female"> Female<br>
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">
@@ -80,15 +81,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('DoB') ? ' has-error' : '' }}">
-                            <label for="DoB" class="col-md-4 control-label">Date of Birth</label>
+                        <div class="form-group{{ $errors->has('dateOfBirth') ? ' has-error' : '' }}">
+                            <label for="dateOfBirth" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
-                                <input id="DoB" type="text" class="form-control" name="DoB" value="{{ old('DoB') }}">
+                                <input id="dateOfBirth" type="text" class="form-control" name="dateOfBirth" placeholder="yyyy-MM-dd" value="{{ old('dateOfBirth') }}">
 
-                                @if ($errors->has('DoB'))
+                                @if ($errors->has('dateOfBirth'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('DoB') }}</strong>
+                                        <strong>{{ $errors->first('dateOfBirth') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -98,7 +99,7 @@
                             <label for="address" class="col-md-4 control-label">Address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}">
+                                <textarea id="address" type="text" class="form-control" name="address" placeholder="Pokemon Street No. 1, Tokyo">{{ old('address') }}</textarea>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">

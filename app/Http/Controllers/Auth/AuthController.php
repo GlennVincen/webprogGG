@@ -21,7 +21,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers;
 
     /**
      * Where to redirect users after login / registration.
@@ -48,14 +48,20 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'profilePicture' => 'required',
-            'gender' => 'required',
-            'DoB' => 'required',
-            'address' => 'required | min:10'
-        ]);
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|alpha_num|confirmed',
+            'profilePicture' => 'required|image',
+            'gender' => 'required|in:Female,Male',
+            'dateOfBirth' => 'required|date_format:Y-m-d|before:10 years ago',
+            'address' => 'required|min:10'
+        ],[
+                'before' => 'You must be at least 10 years old',
+                'date_format' => 'The date of birth does not match the format yyyy-MM-dd.'
+            ]
+        );
+
     }
 
     /**
@@ -66,14 +72,20 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'profilePicture' => $data['profilePicture'],
             'gender' => $data['gender'],
-            'DoB' => $data['DoB'],
+            'dateOfBirth' => $data['dateOfBirth'],
             'address' => $data['address'],
             'role' => "User"
         ]);
+
+        $profilePictureName = $data['profilePicture']->getClientOriginalName();
+        $data['profilePicture']->move(base_path().'/public/ProfileImages/',$profilePictureName);
+
+        $user -> profilePicture = $profilePictureName;
+        $user -> save();
+        return $user;
     }
 }
