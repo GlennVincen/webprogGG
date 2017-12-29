@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -48,17 +47,16 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-
         return Validator::make($data, [
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5|alpha_num|confirmed',
             'profilePicture' => 'required|image',
             'gender' => 'required|in:Female,Male',
-            'dateOfBirth' => 'required|date_format:Y-m-d|before:10 years ago',
-            'address' => 'required|min:10'
+            'dateOfBirth' => 'required|date_format:Y-m-d|before:11 years ago+1 seconds',
+            'address' => 'required|min:10',
         ],[
-                'before' => 'You must be at least 10 years old',
-                'date_format' => 'The date of birth does not match the format yyyy-MM-dd.'
+                'before' => 'You must be older than 10 years old',
+                'date_format' => 'The date of birth does not match the format yyyy-MM-dd.',
             ]
         );
 

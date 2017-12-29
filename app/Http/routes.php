@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/updateUser', 'UserController@showUpdateMenu');
+Route::get('/updateUser/getUserId', 'UserController@getUserId');
+Route::get('/updateUser/{userId}', 'UserController@showUpdateForm');
+Route::post('/updateUser/{userId}', 'UserController@update');

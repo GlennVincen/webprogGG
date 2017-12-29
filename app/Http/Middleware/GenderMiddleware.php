@@ -15,7 +15,7 @@ class GenderMiddleware
      */
     public function handle($request, Closure $next)
     {
-            if(Auth::user()->gender != 'male'){
+            if(Auth::user()->role != 'User'){
                 Auth::logout();
                 return redirect('/register');
             }

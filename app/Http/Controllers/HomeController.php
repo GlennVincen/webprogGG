@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,19 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function manualLogin(Request $request){
-        $user = User::find($request->id);
-
-        Auth::login($user);
-        return redirect('/home');
-    }
-
-    public function manualLogout(Request $request){
-        Auth::logout();
-        return redirect('/home');
+        $carbon=Carbon::today('Asia/Jakarta');
+        return view('home')->with('carbon', $carbon->format('l-d M y'));
     }
 
 }
