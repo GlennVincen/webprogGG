@@ -56,6 +56,15 @@ class UserController extends Controller
         $user -> save();
 
         return redirect('/updateUser');
+    }
 
+    public function showDeleteMenu(){
+        $users = User::where('role', 'User')->orderBy('email')->get();
+        return view('user.deleteUserMenu')->with('users', $users);
+    }
+
+    public function delete(Request $request){
+        User::where('id', $request['id'])->delete();
+        return redirect('/deleteUser');
     }
 }

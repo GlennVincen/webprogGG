@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
-class GenderMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +16,8 @@ class GenderMiddleware
      */
     public function handle($request, Closure $next)
     {
-            if(Auth::user()->role != 'User'){
-                Auth::logout();
-                return redirect('/register');
+            if(Auth::user() == null || Auth::user()->role != 'Admin'){
+                return redirect('/home');
             }
             return $next($request);
     }
