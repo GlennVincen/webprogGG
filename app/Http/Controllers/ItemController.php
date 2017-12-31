@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\item;
+use App\element;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,7 +19,7 @@ class ItemController extends Controller
         $name = $request['name'];
         $price = $request['price'];
 
-        item::create([
+        element::create([
             'name'=>$name,
             'price'=>$price
         ]);
@@ -32,7 +32,7 @@ class ItemController extends Controller
         $name = $request['name'];
         $price = $request['price'];
 
-        Item::where('id', $id)->update([
+        element::where('id', $id)->update([
            'name' => $name,
             'price' => $price
         ]);
@@ -42,14 +42,14 @@ class ItemController extends Controller
     public function delete(request $request){
         $id = $request['id'];
 
-        Item::where('id', $request['id'])->delete();
+        element::where('id', $request['id'])->delete();
         return view('formitem');
     }
 
     public function view(){
-        Item::all(); //where('id',1) -> get(); (ambil yg sesuai kondisi)
+        element::all(); //where('id',1) -> get(); (ambil yg sesuai kondisi)
                      //              -> first(); (ambil yg sesuai kondisi, tapi yg prtama kl ktemu doang)
-        $items=item::all();
+        $items=element::all();
 //Cara 1
 	return view('viewitem', ['items' => $items]);
 
