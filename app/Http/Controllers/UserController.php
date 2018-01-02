@@ -27,12 +27,11 @@ class UserController extends Controller
     }
 
     public function update($userId, Request $request){
-
         $this->validate($request, [
             'email' => 'required|email|unique:users,email,'.$userId,
             'profilePicture' => 'required|image',
             'gender' => 'required|in:Female,Male',
-            'dateOfBirth' => 'required|date_format:Y-m-d|before:11 years ago+1 seconds',
+            'dateOfBirth' => 'required|date_format:Y-m-d|before:11 years ago',
             'address' => 'required|min:10',
         ],[
                 'before' => 'You must be older than 10 years old',

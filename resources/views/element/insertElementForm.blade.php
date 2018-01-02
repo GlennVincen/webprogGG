@@ -8,10 +8,10 @@
     <title></title>
 </head>
 <body>
-<form action="{{url('updateElement/'.$element->id)}}" method="post">
+<form action="{{url('insertElement')}}" method="post">
     {{csrf_field()}}
-    <input type="text" id="elementName" name="elementName" placeholder="Element Name" value="{{$element->elementName}}">
-    <input type="submit" value="Edit">
+    <input type="text" id="elementName" name="elementName" placeholder="Element Name">
+    <input type="submit" value="Insert Element">
 
     @if ($errors->has('elementName'))
         <span class="help-block">

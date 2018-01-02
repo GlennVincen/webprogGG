@@ -26,7 +26,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/updateUser/{userId}', 'UserController@update');
     Route::get('/deleteUser', 'UserController@showDeleteMenu');
     Route::post('/deleteUser', 'UserController@delete');
+    Route::get('/insertElement', 'ElementController@showInsertForm');
+    Route::post('/insertElement', 'ElementController@insert');
     Route::get('/updateElement', 'ElementController@showUpdateMenu');
     Route::get('/updateElement/getElementId', 'ElementController@getElementId');
     Route::get('/updateElement/{elementId}', 'ElementController@showUpdateForm');
+    Route::post('/updateElement/{elementId}', 'ElementController@update');
 });
