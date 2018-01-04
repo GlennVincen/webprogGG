@@ -30,7 +30,7 @@
         <label for="email" class="col-md-4 control-label">E-Mail :</label>
 
         <div class="col-md-6">
-            <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}">
+            <input id="email" type="email" name="email" value="{{ $user->email }}">
 
             @if ($errors->has('email'))
                 <span class="help-block">
@@ -59,12 +59,12 @@
         <label for="dateOfBirth" class="col-md-4 control-label">Date of Birth :</label>
 
         <div class="col-md-6">
-            <input id="dateOfBirth" type="text" class="form-control" name="dateOfBirth" value="{{ old('dateOfBirth') }}">
+            <input id="dateOfBirth" type="text" name="dateOfBirth" value="{{ old('dateOfBirth') }}">
 
             @if ($errors->has('dateOfBirth'))
                 <span class="help-block">
-                                        <strong>{{ $errors->first('dateOfBirth') }}</strong>
-                                    </span>
+                    <strong>{{ $errors->first('dateOfBirth') }}</strong>
+                </span>
             @endif
         </div>
     </div>
@@ -73,12 +73,12 @@
         <label for="address" class="col-md-4 control-label">Address</label>
 
         <div class="col-md-6">
-            <textarea id="address" type="text" class="form-control" name="address">{{ old('address') }}</textarea>
+            <textarea id="address" type="text" name="address">{{ old('address') }}</textarea>
 
             @if ($errors->has('address'))
                 <span class="help-block">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
+                    <strong>{{ $errors->first('address') }}</strong>
+                </span>
             @endif
         </div>
     </div>

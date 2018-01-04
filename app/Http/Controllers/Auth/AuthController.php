@@ -79,7 +79,7 @@ class AuthController extends Controller
             'role' => "User"
         ]);
 
-        $profilePictureName = $data['profilePicture']->getClientOriginalName();
+        $profilePictureName = time().'.'.$data['profilePicture']->getClientOriginalExtension();
         $data['profilePicture']->move(base_path().'/public/ProfileImages/',$profilePictureName);
 
         $user -> profilePicture = $profilePictureName;

@@ -32,4 +32,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/updateElement/getElementId', 'ElementController@getElementId');
     Route::get('/updateElement/{elementId}', 'ElementController@showUpdateForm');
     Route::post('/updateElement/{elementId}', 'ElementController@update');
+    Route::get('/insertPokemon', 'PokemonController@showInsertForm');
+    Route::post('/insertPokemon', 'PokemonController@insert');
 });
+

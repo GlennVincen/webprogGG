@@ -48,7 +48,7 @@ class UserController extends Controller
 
         $user = User::where('id', $userId)->first();
 
-        $profilePictureName = $request['profilePicture']->getClientOriginalName();
+        $profilePictureName = time().'.'.$request['profilePicture']->getClientOriginalExtension();
         $request['profilePicture']->move(base_path().'/public/ProfileImages/',$profilePictureName);
 
         $user -> profilePicture = $profilePictureName;

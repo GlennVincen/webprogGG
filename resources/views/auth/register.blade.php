@@ -99,7 +99,7 @@
                             <label for="address" class="col-md-4 control-label">Address</label>
 
                             <div class="col-md-6">
-                                <textarea id="address" type="text" class="form-control" name="address" placeholder="Pokemon Street No. 1, Tokyo">{{ old('address') }}</textarea>
+                                <textarea id="address" class="form-control" name="address" placeholder="Pokemon Street No. 1, Tokyo">{{ old('address') }}</textarea>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
