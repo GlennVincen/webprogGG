@@ -12,8 +12,8 @@
                     @if(Auth::user()->role == 'Admin')
                         Admin<br>
 
-                    @elseif(Auth::user()->role == 'User')
-                        User<br>
+                    @elseif(Auth::user()->role == 'Member')
+                        Member<br>
 
                     @elseif(Auth::guest())
                         Guest<br>

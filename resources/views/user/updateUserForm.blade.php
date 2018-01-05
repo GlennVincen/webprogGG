@@ -30,7 +30,7 @@
         <label for="email" class="col-md-4 control-label">E-Mail :</label>
 
         <div class="col-md-6">
-            <input id="email" type="email" name="email" value="{{ $user->email }}">
+            <input id="email" type="email" name="email" value="{{ $user['email'] }}">
 
             @if ($errors->has('email'))
                 <span class="help-block">
@@ -44,8 +44,8 @@
         <label for="gender" class="col-md-4 control-label">Gender : </label>
 
         <div class="col-md-6">
-            <input type="radio" name="gender" value="Male"> Male<br>
-            <input type="radio" name="gender" value="Female"> Female<br>
+            <input type="radio" name="gender" value="Male" @if($user['gender'] == 'Male') checked @endif> Male<br>
+            <input type="radio" name="gender" value="Female" @if($user['gender'] == 'Female') checked @endif> Female<br>
 
             @if ($errors->has('gender'))
                 <span class="help-block">
@@ -59,7 +59,7 @@
         <label for="dateOfBirth" class="col-md-4 control-label">Date of Birth :</label>
 
         <div class="col-md-6">
-            <input id="dateOfBirth" type="text" name="dateOfBirth" value="{{ old('dateOfBirth') }}">
+            <input id="dateOfBirth" type="text" name="dateOfBirth" value="{{ $user['dateOfBirth'] }}">
 
             @if ($errors->has('dateOfBirth'))
                 <span class="help-block">
@@ -73,7 +73,7 @@
         <label for="address" class="col-md-4 control-label">Address</label>
 
         <div class="col-md-6">
-            <textarea id="address" type="text" name="address">{{ old('address') }}</textarea>
+            <textarea id="address" type="text" name="address">{{ $user['address'] }}</textarea>
 
             @if ($errors->has('address'))
                 <span class="help-block">

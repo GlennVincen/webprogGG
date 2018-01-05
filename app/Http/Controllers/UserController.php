@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Input;
 class UserController extends Controller
 {
     public function showUpdateMenu(){
-        $users = User::where('role', 'User')->orderBy('email')->get();
+        $users = User::where('role', 'Member')->orderBy('email')->get();
         return view('user.updateUserMenu')->with('users', $users);
     }
 

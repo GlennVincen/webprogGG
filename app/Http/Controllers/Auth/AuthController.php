@@ -76,7 +76,7 @@ class AuthController extends Controller
             'gender' => $data['gender'],
             'dateOfBirth' => $data['dateOfBirth'],
             'address' => $data['address'],
-            'role' => "User"
+            'role' => "Member"
         ]);
 
         $profilePictureName = time().'.'.$data['profilePicture']->getClientOriginalExtension();

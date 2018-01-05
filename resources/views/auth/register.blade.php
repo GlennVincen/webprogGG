@@ -70,8 +70,8 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-                                <input type="radio" name="gender" value="Male"> Male<br>
-                                <input type="radio" name="gender" value="Female"> Female<br>
+                                <input type="radio" name="gender" value="Male"> Male
+                                <input type="radio" name="gender" value="Female"> Female
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">

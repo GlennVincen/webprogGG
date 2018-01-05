@@ -34,5 +34,17 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/updateElement/{elementId}', 'ElementController@update');
     Route::get('/insertPokemon', 'PokemonController@showInsertForm');
     Route::post('/insertPokemon', 'PokemonController@insert');
+    Route::get('/updatePokemon/{pokemonId}', 'PokemonController@showUpdateForm');
+    Route::post('/updatePokemon/{pokemonId}', 'PokemonController@update');
+    Route::get('/deletePokemon/{pokemonId}', 'PokemonController@delete');
 });
 
+Route::group(['middleware' => 'member'], function () {
+    Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
+    Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
+});
+
+Route::group(['middleware' =>'registered'], function(){
+    Route::get('/pokemonList', 'PokemonController@showPokemonList');
+    Route::get('/pokemonList/search', 'PokemonController@search');
+});
