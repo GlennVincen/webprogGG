@@ -34,7 +34,7 @@
     @endif
     <br>
 
-    <input type="radio" name="gender" value="Male"> Male<br>
+    <input type="radio" name="gender" value="Male"> Male
     <input type="radio" name="gender" value="Female"> Female<br>
 
     @if ($errors->has('gender'))

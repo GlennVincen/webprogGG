@@ -16,8 +16,8 @@ class PokemonController extends Controller
                 $pokemons = Pokemon::where('pokemonName', 'like', '%'.$request['keyword'].'%')->paginate(24);
             }
             else if($request['category'] == "Element"){
-                $element = Element::where('elementName', 'like', '%'.$request['keyword'].'%')->first();
-                $pokemons = Pokemon::where('element_id', 'like', '%'.$element['id'].'%')->paginate(24);
+                $element = Element::where('elementName', $request['keyword'])->first();
+                $pokemons = Pokemon::where('element_id', $element['id'])->paginate(24);
             }
         }
         else $pokemons = Pokemon::paginate(24);
