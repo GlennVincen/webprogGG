@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function index(){
         $carbon=Carbon::today('Asia/Jakarta');
-        return view('home')->with('carbon', $carbon->format('l-d M y'));
+        return view('home')->with('carbon', $carbon->format('D-d M y'));
     }
 
 }
