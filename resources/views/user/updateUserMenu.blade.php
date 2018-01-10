@@ -8,6 +8,8 @@
     <title></title>
 </head>
 <body>
+@extends('layouts.app')
+@section('content')
     <form action="{{url('updateUser/getUserId')}}" method="get">
         <select name="id">
         @foreach($users as $user)
@@ -16,5 +18,6 @@
         </select>
         <input type="submit" value="Edit User">
     </form>
+    @endsection
 </body>
 </html>

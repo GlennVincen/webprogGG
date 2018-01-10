@@ -8,6 +8,8 @@
     <title></title>
 </head>
 <body>
+@extends('layouts.app')
+@section('content')
 <form action="{{url('updateElement/'.$element->id)}}" method="post">
     {{csrf_field()}}
     <input type="text" id="elementName" name="elementName" placeholder="Element Name" value="{{$element->elementName}}">
@@ -19,5 +21,6 @@
         </span>
     @endif
 </form>
+    @endsection
 </body>
 </html>

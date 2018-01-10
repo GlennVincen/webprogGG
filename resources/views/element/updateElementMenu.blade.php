@@ -8,6 +8,8 @@
     <title></title>
 </head>
 <body>
+@extends('layouts.app')
+@section('content')
     <form action="{{url('updateElement/getElementId')}}" method="get">
         <select name="id">
             @foreach($elements as $element)
@@ -16,5 +18,6 @@
         </select>
         <input type="submit" value="Search">
     </form>
+    @endsection
 </body>
 </html>

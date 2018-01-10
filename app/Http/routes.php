@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (){
+    return Redirect::to('/home');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/updateUser', 'UserController@showUpdateMenu');
@@ -42,9 +43,13 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'member'], function () {
     Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
     Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
+
+
 });
 
 Route::group(['middleware' =>'registered'], function(){
     Route::get('/pokemonList', 'PokemonController@showPokemonList');
     Route::get('/pokemonList/search', 'PokemonController@search');
+
+
 });

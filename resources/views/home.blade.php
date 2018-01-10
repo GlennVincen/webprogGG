@@ -8,15 +8,13 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!<br>
-                    @if(Auth::user()->role == 'Admin')
+                    Welcome to PokeMart,<br>
+                    @if(Auth::guest())
+                    @elseif(Auth::user()->role == 'Admin')
                         Admin<br>
 
                     @elseif(Auth::user()->role == 'Member')
                         Member<br>
-
-                    @elseif(Auth::guest())
-                        Guest<br>
 
                     @endif
                     <!--Show Current Date-->

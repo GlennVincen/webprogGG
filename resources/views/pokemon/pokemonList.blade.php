@@ -8,6 +8,8 @@
     <title></title>
 </head>
 <body>
+@extends('layouts.app')
+@section('content')
 <form action="{{url('/pokemonList/search')}}" method="get">
     <input type="text" name="keyword" placeholder="By Name,By Element">
     <input type="submit" value="Search">
@@ -34,5 +36,6 @@
     @endif<br>
 @endforeach
 {{$pokemons->render()}}
+    @endsection
 </body>
 </html>
