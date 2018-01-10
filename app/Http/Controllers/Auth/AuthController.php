@@ -75,8 +75,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'gender' => $data['gender'],
             'dateOfBirth' => $data['dateOfBirth'],
-            'address' => $data['address'],
-            'role' => "Member"
+            'address' => $data['address']
         ]);
 
         $profilePictureName = time().'.'.$data['profilePicture']->getClientOriginalExtension();
