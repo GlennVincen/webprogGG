@@ -58,7 +58,7 @@ class UserController extends Controller
     }
 
     public function showDeleteMenu(){
-        $users = User::where('role', 'User')->orderBy('email')->get();
+        $users = User::where('role', 'Member')->orderBy('email')->get();
         return view('user.deleteUserMenu')->with('users', $users);
     }
 

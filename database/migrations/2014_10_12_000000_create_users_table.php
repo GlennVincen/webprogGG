@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->date('dateOfBirth');
             $table->string('address');
-            $table->string('role')->default('User');
+            $table->string('role')->default('Member');
             $table->rememberToken();
             $table->timestamps();
         });
