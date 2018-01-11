@@ -49,19 +49,17 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'member'], function () {
     Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
     Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
-
+    Route::get('/profileUpdate/{userId}', 'ProfileController@showForm');
+    Route::post('/profileUpdate/{userId}', 'ProfileController@update');
+    Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
+    Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
+    Route::get('/cart', 'CartController@index');
+    Route::post('/addCart/{pokemonId}', 'CartController@add');
+    Route::get('/cart/{cartId}', 'CartController@destroy');
+    Route::post('/insertTransactionDetail', 'TransactionController@insert');
 });
 
 Route::group(['middleware' =>'registered'], function(){
     Route::get('/pokemonList', 'PokemonController@showPokemonList');
     Route::get('/pokemonList/search', 'PokemonController@search');
-    Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
-    Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
-
-    Route::get('/cart', 'CartController@index');
-    Route::post('/addCart/{pokemonId}', 'CartController@add');
-    Route::get('/cart/{cartId}', 'CartController@destroy');
-    Route::get('/profileUpdate/{pokemonId}', 'ProfileController@showForm');
-    Route::post('/profileUpdate/{userId}', 'ProfileController@update');
-    Route::post('/insertTransactionDetail', 'TransactionController@insert');
 });
