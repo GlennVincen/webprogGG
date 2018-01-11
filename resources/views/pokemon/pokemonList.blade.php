@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>Pokemon List</title>
 </head>
 <body>
 @extends('layouts.app')
@@ -22,16 +22,17 @@
 @foreach($pokemons as $pokemon)
             <img src="{{asset('PokemonImages/' . $pokemon->pokemonPicture)}}" height="200" width="200" alt=""><br>
             {{$pokemon['pokemonName']}}<br>
-    @if(Auth::user()->role == 'Member')
-        <form action="{{url('/pokemonDetail/'.$pokemon['id'])}}" method="get">
-        <input type="submit" value="Display">
-        </form>
-    @elseif(Auth::user()->role == 'Admin')
+    @if(Auth::user()->role == 'Admin')
         <form action="{{url('/updatePokemon/'.$pokemon['id'])}}" method="get">
             <input type="submit" value="Display">
         </form>
         <form action="{{url('/deletePokemon/'.$pokemon['id'])}}" method="get">
             <input type="submit" value="Delete">
+        </form>
+
+    @else
+        <form action="{{url('/pokemonDetail/'.$pokemon['id'])}}" method="get">
+            <input type="submit" value="Display">
         </form>
     @endif<br>
 @endforeach

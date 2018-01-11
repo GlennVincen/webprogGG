@@ -4,26 +4,16 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
-    public function showUpdateMenu(){
-        $users = User::where('role', 'User')->orderBy('email')->get();
-        return view('user.updateUserMenu')->with('users', $users);
-    }
-
-    public function getUserId(Request $request){
-        $selectId = $request['id'];
-        return redirect('/updateUser/'.$selectId);
-    }
-
-    public function showUpdateForm($userId){
-        $user = User::where('id', $userId)->first();
-        return view('user.updateUserForm')->with('user', $user);
+    public function showForm()
+    {
+        $user = Auth::user();
+        return view('user/updateProfileUserForm')->with('user', $user);
     }
 
     public function update($userId, Request $request){
@@ -54,16 +44,8 @@ class UserController extends Controller
         $user -> profilePicture = $profilePictureName;
         $user -> save();
 
-        return redirect('/updateUser');
+        return redirect('/home');
     }
 
-    public function showDeleteMenu(){
-        $users = User::where('role', 'Member')->orderBy('email')->get();
-        return view('user.deleteUserMenu')->with('users', $users);
-    }
 
-    public function delete(Request $request){
-        User::where('id', $request['id'])->delete();
-        return redirect('/deleteUser');
-    }
 }

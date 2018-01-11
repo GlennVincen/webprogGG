@@ -56,12 +56,19 @@
                         <li><a href="{{ url('/insertElement') }}">Insert Element</a></li>
                         <li><a href="{{ url('/updateElement') }}">Update Element</a></li>
                         <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>
+                        <li><a href="{{ url('/transaction') }}">Transaction List</a></li>
+                        <li><a href="{{ url('/deleteTransaction') }}">Delete Transaction</a></li>
                     @elseif(Auth::user()->role=='Member')
                         <li><a href="{{ url('/home') }}">Home</a></li>
                         <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>
+                        <li><a href="{{ url('/cart') }}">Cart</a></li>
+                        <li><a href="{{ url('/cart/createCart') }}">Home</a></li>
+
                     @elseif(Auth::user()->role=='User')
                         <li><a href="{{ url('/home') }}">Home</a></li>
                         <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>
+                        <li><a href="{{ url('/cart') }}">Cart</a></li>
+                        <li><a href="{{ url('/profileUpdate/{userId}') }}">Update Profile</a></li>
                     @endIf
 
                     {{--@if(empty($_SESSION['user']))--}}

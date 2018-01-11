@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>Pokemon Detail</title>
 </head>
 <body>
     {{$pokemon['pokemonName']}}<br>
@@ -26,6 +26,12 @@
     <br>
     <!--Bagian cart (Glenn)-->
     <!-->
+
+    <form action="{{url('/addCart/'.$pokemon['id'])}}" method="post">
+        {{csrf_field()}}
+        <input type="submit" value="Add to cart">
+    </form>
+
     <form action="{{url('/pokemonDetail/'.$pokemon['id'].'/comment')}}" method="post">
         {{csrf_field()}}
         <input type="text" name="body" id="body" placeholder="Your Comment Here">
