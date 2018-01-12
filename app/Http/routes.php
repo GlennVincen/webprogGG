@@ -46,12 +46,12 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/transactionDetail/{transactionDetailId}', 'TransactionController@Detail');
 });
 
-Route::group(['middleware' => 'member'], function () {
+Route::group(['middleware' => 'registered'], function () {
     Route::get('/pokemonList', 'PokemonController@showPokemonList');
     Route::get('/pokemonList/search', 'PokemonController@search');
 });
 
-Route::group(['middleware' =>'registered'], function(){
+Route::group(['middleware' =>'member'], function(){
     Route::get('/pokemonList', 'PokemonController@showPokemonList');
     Route::get('/pokemonList/search', 'PokemonController@search');
     Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');

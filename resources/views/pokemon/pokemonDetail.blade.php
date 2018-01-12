@@ -18,7 +18,7 @@
 
     <form action="{{url('/addCart/'.$pokemon['id'])}}" method="post">
         {{csrf_field()}}
-        <input type="text" id="Quantity" name="Quantity" placeholder="Quantity" value="{{ old('Quantity') }}"><br>
+        <input type="number" id="Quantity" name="Quantity" placeholder="Quantity" value="{{ old('Quantity') }}"><br>
         @if ($errors->has('Quantity'))
             <span class="help-block">
             <strong>{{ $errors->first('Quantity') }}</strong>
