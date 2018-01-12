@@ -62,4 +62,6 @@ Route::group(['middleware' =>'member'], function(){
     Route::post('/addCart/{pokemonId}', 'CartController@add');
     Route::get('/cart/{cartId}', 'CartController@destroy');
     Route::post('/insertTransactionDetail', 'TransactionController@insert');
+    Route::get('/pokemonList', 'PokemonController@showPokemonList');
+    Route::get('/pokemonList/search', 'PokemonController@search');
 });

@@ -268,6 +268,7 @@ class ComposerStaticInitff5f7bfb652409b1b830b6a80e7dc12d
         'CreateElementsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_02_084830_create_elements_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePokemonsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_04_130629_create_pokemons_table.php',
+        'CreateTempTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_12_145411_create_temp_table.php',
         'CreateTransactionsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_065351_create_transactions_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

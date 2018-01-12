@@ -63,14 +63,12 @@
                         <li><a href="{{ url('/home') }}"><h5>Home</h5></a></li>
                         <li><a href="{{ url('/pokemonList') }}"><h5>Pokemon List</h5></a></li>
                         <li><a href="{{ url('/cart') }}"><h5>Cart</h5></a></li>
-                        <li><a href="{{ url('/cart/createCart') }}"><h5>Transaction</h5></a></li>
                         <li><a href="{{ url('/profileUpdate/{userId}') }}"><h5>Update Profil</h5>e</a></li>
 
                     @elseif(Auth::user()->role=='User')
                         <li><a href="{{ url('/home') }}"><h5>Home</h5></a></li>
                         <li><a href="{{ url('/pokemonList') }}"><h5>Pokemon List</h5></a></li>
                         <li><a href="{{ url('/cart') }}"><h5>Cart</h5></a></li>
-                        <li><a href="{{ url('/cart/createCart') }}"><h5>Transaction</h5></a></li>
                         <li><a href="{{ url('/profileUpdate/{userId}') }}"><h5>Update Profile</h5></a></li>
                     @endIf
 

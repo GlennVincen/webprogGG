@@ -11,6 +11,7 @@ return array(
     'CreateElementsTable' => $baseDir . '/database/migrations/2018_01_02_084830_create_elements_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePokemonsTable' => $baseDir . '/database/migrations/2018_01_04_130629_create_pokemons_table.php',
+    'CreateTempTable' => $baseDir . '/database/migrations/2018_01_12_145411_create_temp_table.php',
     'CreateTransactionsTable' => $baseDir . '/database/migrations/2018_01_11_065351_create_transactions_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

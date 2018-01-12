@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Temp;
 use Illuminate\Http\Request;
 use App\Transaction;
 use App\Http\Requests;
@@ -34,6 +35,15 @@ class TransactionController extends Controller
             'status' => 'Pending'
         ]);
 
+        $cart2 = DB::table('cart')->select('pokemonName', 'Quantity', 'price')->first();
+
+        $temp = Temp::create([
+            'pokemonName' => $cart2->pokemonName,
+            'Quantity' => $cart2->Quantity,
+            'price' => $cart2->price
+        ]);
+
+        $temp -> save();
         $transaction -> save();
 
         Cart::truncate();
@@ -56,15 +66,14 @@ class TransactionController extends Controller
     }
 
     public function Detail($transactionId){
-
-//        Transaction::where('id', $transactionId)->delete();
-
-        return redirect('/cart');
+        $temp = Temp::all();
+        return view('cart.transactionDetail')->with('temp', $temp);
     }
 
     public function Delete($transactionId)
     {
         Transaction::where('id', $transactionId)->delete();
+        Temp::where('id', $transactionId)->delete();
 
         return redirect('/deleteTransaction');
     }
