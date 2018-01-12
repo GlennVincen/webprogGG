@@ -12,13 +12,7 @@ class Cart extends Model
     protected $fillable=['pokemonName', 'pokemonPicture', 'Quantity', 'price', 'status', 'email'];
 
     public static function getSubTotalPrice() {
-////        $subTotalPrice1 = DB::table('Cart').Quantity;
-////        $subTotalPrice2 = DB::table('Cart').price;
-//        $subTotalPrice1 = DB::Cart('Quantity');
-//        $subTotalPrice2 = DB::table('Cart').price;
-//        $subTotalPrice = $subTotalPrice1 * $subTotalPrice2;
-//
-//        return $subTotalPrice;
+
 
         $SubTotalPrice = Cart::select(DB::raw('(price * Quantity)as Sub_total '))->get();
         return $SubTotalPrice;

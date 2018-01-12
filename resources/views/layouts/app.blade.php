@@ -48,59 +48,31 @@
                 <ul class="nav navbar-nav">
 
                     @if(Auth::guest())
-                        <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('/home') }}"><h5>Home</h5></a></li>
                     @elseif(Auth::user()->role=='Admin')
-                        <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/updateUser') }}">Update User</a></li>
-                        <li><a href="{{ url('/insertPokemon') }}">Insert Pokemon</a></li>
-                        <li><a href="{{ url('/insertElement') }}">Insert Element</a></li>
-                        <li><a href="{{ url('/updateElement') }}">Update Element</a></li>
-                        <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>
-                        <li><a href="{{ url('/transaction') }}">Transaction List</a></li>
-                        <li><a href="{{ url('/deleteTransaction') }}">Delete Transaction</a></li>
+                        <li><a href="{{ url('/home') }}"><h5>Home</h5></a></li>
+                        <li><a href="{{ url('/updateUser') }}"><h5>Update User</h5></a></li>
+                        <li><a href="{{ url('/deleteUser') }}"><h5>Delete User</h5></a></li>
+                        <li><a href="{{ url('/insertPokemon') }}"><h5>Insert Pokemon</h5></a></li>
+                        <li><a href="{{ url('/insertElement') }}"><h5>Insert Element</h5></a></li>
+                        <li><a href="{{ url('/updateElement') }}"><h5>Update Element</h5></a></li>
+                        <li><a href="{{ url('/pokemonList') }}"><h5>Pokemon List</h5></a></li>
+                        <li><a href="{{ url('/transaction') }}"><h5>Transaction List</h5></a></li>
+                        <li><a href="{{ url('/deleteTransaction') }}"><h5>Delete Transaction</h5></a></li>
                     @elseif(Auth::user()->role=='Member')
-                        <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>
-                        <li><a href="{{ url('/cart') }}">Cart</a></li>
-                        <li><a href="{{ url('/cart/createCart') }}">Home</a></li>
+                        <li><a href="{{ url('/home') }}"><h5>Home</h5></a></li>
+                        <li><a href="{{ url('/pokemonList') }}"><h5>Pokemon List</h5></a></li>
+                        <li><a href="{{ url('/cart') }}"><h5>Cart</h5></a></li>
+                        <li><a href="{{ url('/cart/createCart') }}"><h5>Transaction</h5></a></li>
+                        <li><a href="{{ url('/profileUpdate/{userId}') }}"><h5>Update Profil</h5>e</a></li>
 
                     @elseif(Auth::user()->role=='User')
-                        <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>
-                        <li><a href="{{ url('/cart') }}">Cart</a></li>
-                        <li><a href="{{ url('/profileUpdate/{userId}') }}">Update Profile</a></li>
+                        <li><a href="{{ url('/home') }}"><h5>Home</h5></a></li>
+                        <li><a href="{{ url('/pokemonList') }}"><h5>Pokemon List</h5></a></li>
+                        <li><a href="{{ url('/cart') }}"><h5>Cart</h5></a></li>
+                        <li><a href="{{ url('/cart/createCart') }}"><h5>Transaction</h5></a></li>
+                        <li><a href="{{ url('/profileUpdate/{userId}') }}"><h5>Update Profile</h5></a></li>
                     @endIf
-
-                    {{--@if(empty($_SESSION['user']))--}}
-                    {{--<li><a href="{{ url('/home') }}">Home</a></li>--}}
-                    {{--@elseif(Auth::user()->role == 'Admin')--}}
-                            {{--<li><a href="{{ url('/home') }}">Home</a></li>--}}
-                            {{--<li><a href="{{ url('/updateUser') }}">Update User</a></li>--}}
-                            {{--<li><a href="{{ url('/insertPokemon') }}">Insert Pokemon</a></li>--}}
-                            {{--<li><a href="{{ url('/insertElement') }}">Insert Element</a></li>--}}
-                            {{--<li><a href="{{ url('/updateElement') }}">Update Element</a></li>--}}
-                            {{--<li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>--}}
-
-
-
-                        {{--@elseif(Auth::user()->role == 'Member')--}}
-                            {{--<li><a href="{{ url('/home') }}">Home</a></li>--}}
-                            {{--<li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>--}}
-
-
-                        {{--@elseif(Auth::guest())--}}
-                            {{--<li><a href="{{ url('/home') }}">Home</a></li>--}}
-                            {{--<li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>--}}
-                         {{--@endIf--}}
-
-
-                    {{--<li><a href="{{ url('/home') }}">Home</a></li>--}}
-                        {{--
-                    <li><a href="{{ url('/updateUser') }}">Update User</a></li>
-                    <li><a href="{{ url('/insertPokemon') }}">Insert Pokemon</a></li>
-                    <li><a href="{{ url('/insertElement') }}">Insert Element</a></li>
-                    <li><a href="{{ url('/updateElement') }}">Update Element</a></li>
-                    <li><a href="{{ url('/pokemonList') }}">Pokemon List</a></li>--}}
 
                 </ul>
 
