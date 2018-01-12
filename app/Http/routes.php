@@ -47,6 +47,13 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::group(['middleware' => 'member'], function () {
+    Route::get('/pokemonList', 'PokemonController@showPokemonList');
+    Route::get('/pokemonList/search', 'PokemonController@search');
+});
+
+Route::group(['middleware' =>'registered'], function(){
+    Route::get('/pokemonList', 'PokemonController@showPokemonList');
+    Route::get('/pokemonList/search', 'PokemonController@search');
     Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
     Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
     Route::get('/profileUpdate/{userId}', 'ProfileController@showForm');
@@ -57,9 +64,4 @@ Route::group(['middleware' => 'member'], function () {
     Route::post('/addCart/{pokemonId}', 'CartController@add');
     Route::get('/cart/{cartId}', 'CartController@destroy');
     Route::post('/insertTransactionDetail', 'TransactionController@insert');
-});
-
-Route::group(['middleware' =>'registered'], function(){
-    Route::get('/pokemonList', 'PokemonController@showPokemonList');
-    Route::get('/pokemonList/search', 'PokemonController@search');
 });

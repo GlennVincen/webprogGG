@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use Illuminate\Http\Request;
 use App\Transaction;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 
 class TransactionController extends Controller
@@ -23,16 +25,18 @@ class TransactionController extends Controller
     }
 
     public function insert(Request $request){
-        $transaction = Transaction::create([
-            'userEmail'=>'Dummy',
-            'transactionDate'=>'Dummy',
-            'status'=>'Pending'
-        ]);
-        // $pokemonPictureName = time().'.'.$request['pokemonPicture']->getClientOriginalExtension();
-        // $request['pokemonPicture']->move(base_path().'/public/PokemonImages/',$pokemonPictureName);
 
-        // $pokemon -> pokemonPicture = $pokemonPictureName;
+        $cart = DB::table('cart')->select('email', 'created_at')->first();
+
+        $transaction = Transaction::create([
+            'userEmail' => $cart->email,
+            'transactionDate' => $cart->created_at,
+            'status' => 'Pending'
+        ]);
+
         $transaction -> save();
+
+        Cart::truncate();
 
         return redirect('/pokemonList');
     }
@@ -53,7 +57,7 @@ class TransactionController extends Controller
 
     public function Detail($transactionId){
 
-        Transaction::where('id', $transactionId)->delete();
+//        Transaction::where('id', $transactionId)->delete();
 
         return redirect('/cart');
     }

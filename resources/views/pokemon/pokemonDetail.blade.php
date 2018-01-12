@@ -15,8 +15,15 @@
     @endforeach
     <br>
 
+
     <form action="{{url('/addCart/'.$pokemon['id'])}}" method="post">
         {{csrf_field()}}
+        <input type="text" id="Quantity" name="Quantity" placeholder="Quantity" value="{{ old('Quantity') }}"><br>
+        @if ($errors->has('Quantity'))
+            <span class="help-block">
+            <strong>{{ $errors->first('Quantity') }}</strong>
+        </span>
+        @endif
         <input type="submit" value="Add to cart">
     </form>
 

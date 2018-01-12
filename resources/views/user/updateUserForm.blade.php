@@ -1,21 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Update User</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
+
 <h3>Update User</h3>
 <img src="{{asset('ProfileImages/' . $user->profilePicture)}}" alt="">
+
 <form action="{{url('/updateUser/'.$user->id)}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
 
     <div class="form-group{{ $errors->has('profilePicture') ? ' has-error' : '' }}">
 
-        <div class="col-md-6">
+        <div class="col-md-2">
             <input id="profilePicture" type="file" class="form-control" name="profilePicture">
 
             @if ($errors->has('profilePicture'))
@@ -25,7 +19,7 @@
             @endif
         </div>
     </div>
-
+    <br><br><br>
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <label for="email" class="col-md-4 control-label">E-Mail :</label>
 
@@ -82,7 +76,8 @@
             @endif
         </div>
     </div>
+    <br><br><br><br><br><br><br><br><br>
     <input type="submit" value="Edit">
 </form>
-</body>
-</html>
+
+@endsection

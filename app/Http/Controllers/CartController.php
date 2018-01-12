@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Pokemon;
 use App\User;
+use Auth;
 use App\Cart;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -57,15 +59,22 @@ class CartController extends Controller
 //$request['pokemonName']
 //$request['price']
     public function add($pokemonId, Request $request){
-        $cart = Cart::create([
-            'pokemonName' => 'Dummy',
-            'Quantity' => 1,
-            'price' =>10000
-        ]);
-       // $pokemonPictureName = time().'.'.$request['pokemonPicture']->getClientOriginalExtension();
-       // $request['pokemonPicture']->move(base_path().'/public/PokemonImages/',$pokemonPictureName);
 
-       // $pokemon -> pokemonPicture = $pokemonPictureName;
+        $this->validate($request, [
+            'Quantity' => 'required|integer|min:1'
+        ]);
+
+        $pokemon = DB::table('pokemons')->select('pokemonName', 'pokemonPicture', 'price')->where('id', $pokemonId)->first();
+
+        $user = Auth::user()->email;
+        $cart = Cart::create([
+            'pokemonPicture' => $pokemon->pokemonPicture,
+            'pokemonName' => $pokemon->pokemonName,
+            'Quantity' => $request->Quantity,
+            'price' => $pokemon->price,
+            'email' => $user
+        ]);
+
         $cart -> save();
 
         return redirect('/pokemonList');

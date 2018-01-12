@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCartTable extends Migration
+class CreateCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,6 +19,7 @@ class CreateCartTable extends Migration
             $table->integer('Quantity');
             $table->integer('price');
             $table->string('status');
+            $table->string('email');
             $table->timestamps();
         });
     }

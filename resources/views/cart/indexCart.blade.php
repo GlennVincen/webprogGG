@@ -16,7 +16,7 @@
             <td>{{$carts->pokemonName}}</td>
             <td>{{$carts->Quantity}}</td>
             <td>{{$carts->price}}</td>
-            <td>5000</td>
+            <td>{{\App\Cart::getSubTotalPrice()}}</td>
             <td>
                 <a href="{{URL::to('/cart/'.$carts->id)}}">
                     <input type ="submit" value="Delete">
@@ -30,13 +30,12 @@
 <br><br><br><br>
 <table>
     <tr>
-        <td>Total Quantity</td>
-        <td>1</td>
+        <td>Total Quantity: </td>
+        <td>{{\App\Cart::getTotalQuantity()}}</td>
 
     </tr>
     <tr>
-        <td>Total Price</td>
-        <td>5000</td>
+        <td>{{\App\Cart::getTotalPrice()}}</td>
     </tr>
 </table>
 <br>
