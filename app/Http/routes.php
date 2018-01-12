@@ -52,8 +52,6 @@ Route::group(['middleware' => 'registered'], function () {
 });
 
 Route::group(['middleware' =>'member'], function(){
-    Route::get('/pokemonList', 'PokemonController@showPokemonList');
-    Route::get('/pokemonList/search', 'PokemonController@search');
     Route::get('/pokemonDetail/{pokemonId}', 'PokemonController@showPokemonDetail');
     Route::post('/pokemonDetail/{pokemonId}/comment', 'CommentController@insert');
     Route::get('/profileUpdate/{userId}', 'ProfileController@showForm');
